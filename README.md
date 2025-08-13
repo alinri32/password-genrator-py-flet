@@ -11,8 +11,9 @@ Choose to include numbers, special characters, and uppercase & lowercase letters
 
 Simple and clean interface built with Flet
 
-Install dependencies:
 
+Install dependencies:  
 pip install flet
 
-![Main Screen](assets/Capture.png)
+app screenshot
+![main screen](assets/V1.1.PNG)
