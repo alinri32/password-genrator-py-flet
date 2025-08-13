@@ -15,4 +15,4 @@ Install dependencies:
 
 pip install flet
 
-![Main Screen](assets/v1.1.png)
+![main screen](assets/V1.1.PNG)
