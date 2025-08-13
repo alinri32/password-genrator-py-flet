@@ -24,10 +24,14 @@ def main (page: ft.Page):
             str_pass += str_digit
         if sw_char.value:
             str_pass += str_chars
-
-        password = ''
-        for i in range (8):
-            password += choice(str_pass)
+        
+        try:
+            password = ''
+            for i in range (8):
+                password += choice(str_pass)
+        except:
+            if (sw_lower.value == False) and (sw_upper.value == False) and (sw_digit.value == False) and (sw_char.value == False) :
+                password = "یکی از مقادیر را روشن کنید"
 
         text_pass.value=password
         page.update()
@@ -39,8 +43,8 @@ def main (page: ft.Page):
 
     #make O/F buttom
     sw_lower = ft.Switch(label="حروف الفبای کوچک", value=True)
-    sw_upper = ft.Switch(label="حروف الفبای بزرگ", value=True)
-    sw_digit = ft.Switch(label="ارقام", value=True)
+    sw_upper = ft.Switch(label="حروف الفبای بزرگ", value=False)
+    sw_digit = ft.Switch(label="ارقام", value=False)
     sw_char = ft.Switch(label="کاراکتر ویژه", value=False)
 
     #top show text
