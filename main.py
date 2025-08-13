@@ -27,7 +27,7 @@ def main (page: ft.Page):
         
         try:
             password = ''
-            for i in range (8):
+            for i in range (int(slider_length.value)):
                 password += choice(str_pass)
         except:
             if (sw_lower.value == False) and (sw_upper.value == False) and (sw_digit.value == False) and (sw_char.value == False) :
@@ -69,6 +69,22 @@ def main (page: ft.Page):
         border_radius=15
     )
 
+    #slider for password length
+    lbl_length = ft.Text(value="طول رمز عبور: 8", size=16)
+    def slider_changed(e):
+        lbl_length.value = f"طول رمز عبور: {int(slider_length.value)}"
+        page.update()
+
+    slider_length = ft.Slider(
+        min=4,
+        max=32,
+        value=8,
+        divisions=28,
+        label="{value}",
+        width=360,
+        on_change=slider_changed
+    )
+
     #buttom password gen design
     btn_generate = ft.ElevatedButton(
         text="تولید رمز عبور",
@@ -79,19 +95,12 @@ def main (page: ft.Page):
 
     #column design
     col_sw = ft.Column(
-        controls=[lbl_header , text_pass , sw_lower , sw_upper , sw_digit , sw_char ],
-        height=320,
+        controls=[lbl_header ,lbl_length , slider_length, text_pass , sw_lower , sw_upper , sw_digit , sw_char ,btn_generate],
+        height=700,
         spacing=10
     )
-
-    #row design
-    row_buttom = ft.Row(
-        controls=[btn_generate],
-        height=60
-
-    )
-
-    page.add(col_sw , row_buttom)
+    
+    page.add(col_sw)
     page.update()
 
 ft.app(target=main)
