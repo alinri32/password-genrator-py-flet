@@ -7,6 +7,10 @@ This app allows you to create secure, random passwords with customizable length 
   
 Generate strong random passwords
 
+set password lenth
+
+easy copy to clipboard
+
 Choose to include numbers, special characters, and uppercase & lowercase letters
 
 Simple and clean interface built with Flet
@@ -16,4 +20,4 @@ Install dependencies:
 pip install flet
 
 app screenshot
-![main screen](assets/V1.1.PNG)
+![main screen](assets/V1.2.PNG)
