@@ -36,6 +36,17 @@ def main (page: ft.Page):
         text_pass.value=password
         page.update()
     
+    #copy password to clipboard logic
+    def btn_copy_clicked(e):
+        if text_pass.value and "یکی از مقادیر را روشن کنید" not in text_pass.value:
+            clipboard.copy(text_pass.value)
+            page.open(ft.SnackBar(ft.Text("رمز عبور کپی شد "), open=True))
+        else:
+            page.open(ft.SnackBar(ft.Text("هیچ رمزی برای کپی وجود ندارد "), open=True))
+
+        page.update()
+
+        
     #page size
     page.rtl=True
     page.window.height = 720
@@ -92,15 +103,22 @@ def main (page: ft.Page):
         height=60,
         on_click=btn_gen_clicked
     )
+    #copy password to clipboard designe
+    btn_copy = ft.ElevatedButton(
+        text="کپی رمز",
+        width=360,
+        height=60,
+        on_click=btn_copy_clicked
+    )
 
     #column design
     col_sw = ft.Column(
-        controls=[lbl_header ,lbl_length , slider_length, text_pass , sw_lower , sw_upper , sw_digit , sw_char ,btn_generate],
+        controls=[lbl_header ,lbl_length , slider_length, text_pass , sw_lower , sw_upper , sw_digit , sw_char ,btn_generate , btn_copy],
         height=700,
         spacing=10
     )
     
-    page.add(col_sw)
+    page.add(col_sw ,  )
     page.update()
 
 ft.app(target=main)
